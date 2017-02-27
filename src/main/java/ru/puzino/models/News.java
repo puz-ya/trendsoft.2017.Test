@@ -1,6 +1,9 @@
 package ru.puzino.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Created by Puzino Yury on 27.02.2017.
@@ -16,15 +19,19 @@ public class News {
     /** news category (only one) */
     private Category mCategory;
     /** news date */
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime mTime;
 
-    public News(){}
+    public News(){
+        mTime = LocalDateTime.now();
+    }
 
     public News(Long id, String title, String content, Category category){
         this.mId = id;
         this.mTitle = title;
         this.mContent = content;
         this.mCategory = category;
+        mTime = LocalDateTime.now();
     }
 
     @Override
@@ -69,7 +76,17 @@ public class News {
         return mTime;
     }
 
+    public String getmTimeString(){
+        String str = mTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        return str;
+    }
+
     public void setmTime(LocalDateTime mTime) {
         this.mTime = mTime;
+    }
+
+    public void setmTime(String str){
+        DateTimeFormatter sdf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");
+        this.mTime = LocalDateTime.parse(str, sdf);
     }
 }

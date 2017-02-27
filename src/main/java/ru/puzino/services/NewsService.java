@@ -12,8 +12,9 @@ public interface NewsService {
 
     List<News> findAllNews();
     List<Category> findAllCategories();
+    List<News> findLatest5News();
     News findNewsById(Long id);
-    News findNewsByCategory(Category category);
+    List<News> findNewsByCategory(Category category);
 
     News create(News news);
     News edit(News news);
