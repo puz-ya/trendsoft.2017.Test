@@ -36,11 +36,18 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!--  Thymeleaf template engine -->
 		<dependency>
-			<!--  Thymeleaf template engine -->
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
+
+		<!-- Spring Boot Development Tools -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>
