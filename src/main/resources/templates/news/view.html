@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: site-head">
+    <title th:text="${news.title}">View News</title>
+</head>
+
+<body>
+
+<header th:replace="layout :: site-header" />
+
+<main id="single_news">
+    <article>
+        <h2 class="title" th:text="${news.title}">Title</h2>
+
+        <p class="content" th:utext="${news.content}">Content</p>
+
+        <div class="date">
+            <i>Posted on</i>
+            <span th:text="${news.getmTimeString()}">22-May-2016</span>
+            <span th:if="${news.getCategory()}" th:remove="tag">
+                        <i>in</i>
+                        <a href="#" th:text="${news.getCategory().getName()}" th:href="@{/category/view/{id}/(id=${news.getCategory().getId()})}">Category Name</a>
+                    </span>
+        </div>
+    </article>
+</main>
+
+<footer th:replace="layout :: site-footer" />
+
+</body>
+
+</html>

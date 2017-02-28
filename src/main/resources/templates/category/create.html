@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: site-head">
+    <title>Create Category</title>
+</head>
+
+<body>
+
+    <header th:replace="layout :: site-header" />
+
+    <main>
+        <form th:action="@{/category/create}" method="POST">
+            <fieldset>
+                <legend>Create Category</legend>
+
+                <div>
+                    <label for="cat_name">Name</label>
+                    <div>
+                        <input type="text" id="cat_name" placeholder="Type here..." name="name"/>
+                    </div>
+                </div>
+
+                <div>
+                    <div>
+                        <a th:href="@{/}">Cancel</a>
+                        <input type="submit" value="Submit"/>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </main>
+
+    <footer th:replace="layout :: site-footer" />
+
+</body>
+
+</html>

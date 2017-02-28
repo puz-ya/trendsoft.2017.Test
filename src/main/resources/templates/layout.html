@@ -16,10 +16,11 @@
     <header th:fragment="site-header">
         <a href="index.html" th:href="@{/}"><img id="logo" src="../public/img/news_logo.png" th:src="@{/img/news_logo.png}" /></a>
         <a href="index.html" th:href="@{/}">Home</a>
-        <a href="categories/index.html" th:href="@{/categories}">Categories</a>
-        <a href="news/index.html" th:href="@{/news}">News</a>
+        <a href="categories/index.html" th:href="@{/category/admin}">Categories</a>
+        <a href="news/index.html" th:href="@{/news/admin}">News</a>
+        <a href="category/create.html" th:href="@{/category/create}">Create Category</a>
         <a href="news/create.html" th:href="@{/news/create}">Create News</a>
-        <a href="news/search.html" th:href="@{/news/search}">Search</a>
+        <a href="news/search.html" th:href="@{/search}">Search</a>
 
     </header>
 

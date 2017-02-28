@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: site-head">
+    <title>All news</title>
+</head>
+
+<body>
+
+    <header th:replace="layout :: site-header" />
+
+    <main id="all_news">
+
+        <table>
+            <tr>
+                <td>ID</td>
+                <td>Title</td>
+                <td>Content</td>
+                <td>Date</td>
+                <td>Link to category</td>
+                <td>Link to edit</td>
+                <td>Link to delete</td>
+            </tr>
+            <tr th:each="news : ${all_news}">
+                <td  th:text="${news.id}">News ID</td>
+                <td  th:text="${news.getShortTitle()}">News Title</td>
+                <td  th:text="${news.getShortContent()}">News Content</td>
+                <td  th:text="${news.getmTimeString()}">News Date</td>
+                <td> <a href="#" th:if="${news.getCategory() != null}" th:href="@{/category/view/{id}/(id=${news.getCategory().getId()})}">Show category</a> </td>
+                <td> <a href="#" th:href="@{/news/edit/{id}/(id=${news.getId()})}">Edit</a> </td>
+                <td> <a href="#" th:href="@{/news/delete/{id}/(id=${news.getId()})}">Delete</a> </td>
+            </tr>
+        </table>
+    </main>
+
+    <footer th:replace="layout :: site-footer" />
+
+</body>
+
+</html>

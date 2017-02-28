@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: site-head">
+    <meta charset="UTF-8" />
+    <title>Search</title>
+</head>
+<body>
+    <header th:replace="layout :: site-header" />
+
+    <main id="search">
+        <fieldset>
+            <legend>Search news</legend>
+        <center>
+            <form th:action="@{/search/fullsearch}" method="POST">
+                <input type="text" name="searchText" placeholder="Search everywhere..." maxlength="100" size="100" />
+            <div>
+                <input type="submit" value="Search!"/>
+            </div>
+            </form>
+
+            <div><p><b>OR</b></p></div>
+
+            <form th:action="@{/search/partsearch}" method="POST">
+                <div>
+                    <label for="news_title">Title</label>
+                    <div>
+                        <input type="text" id="news_title" placeholder="Type here..." name="title"/>
+                    </div>
+                </div>
+                <div>
+                    <label for="news_content">Content</label>
+                    <div>
+                        <input type="text" id="news_content" placeholder="Type here..." name="content"/>
+                    </div>
+                </div>
+                <!-- Category here -->
+
+                <div>
+                    <input type="submit" value="Search!"/>
+                </div>
+            </form>
+        </center>
+        </fieldset>
+    </main>
+
+    <footer th:replace="layout :: site-footer" />
+</body>
+</html>

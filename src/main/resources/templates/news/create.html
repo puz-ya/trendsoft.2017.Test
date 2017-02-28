@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: site-head">
+    <title>Create</title>
+</head>
+
+<body>
+
+    <header th:replace="layout :: site-header" />
+
+    <main>
+        <form th:action="@{/news/create}" method="POST">
+            <fieldset>
+                <legend>Create News</legend>
+
+                <div>
+                    <label  for="news_title">Title</label>
+                    <div>
+                        <input type="text"  id="news_title" placeholder="Title"
+                               name="title"/>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="news_content">Content</label>
+                    <div>
+                        <textarea  rows="6" id="news_content" name="content"></textarea>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="news_category">Category</label>
+                    <div>
+                        <select id="news_category" name="categoryId">
+                            <option th:each="p : ${categories}" th:text="${p.getName()}" value="id1" th:value="${p.getId()}"></option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <div>
+                        <a th:href="@{/}">Cancel</a>
+                        <input type="submit" value="Submit"/>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </main>
+
+    <footer th:replace="layout :: site-footer" />
+
+</body>
+
+</html>

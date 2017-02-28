@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: site-head">
+    <title>Delete</title>
+</head>
+
+<body>
+
+    <header th:replace="layout :: site-header" />
+
+<main>
+        <form th:action="@{/news/delete/{id}(id=${news.id})}" method="POST">
+            <fieldset>
+                <legend>Delete News</legend>
+
+                <div>
+                    <label for="news_title">Title</label>
+                    <div>
+                        <input type="text" id="news_title" placeholder="News Title" name="title" th:value="${news.title}" disabled="disabled"/>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="news_content">Content</label>
+                    <div>
+                        <textarea rows="6" id="news_content" name="content" th:field="${news.content}" disabled="disabled"></textarea>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="news_category">Category</label>
+                    <div>
+                        <input type="text" rows="6" id="news_category" name="category" th:field="${news.category.name}" disabled="disabled" />
+                    </div>
+                </div>
+
+                <div>
+                    <div>
+                        <a th:href="@{/news/{id}(id = ${news.id})}">Cancel</a>
+                        <input type="submit" value="Delete"/>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </main>
+
+    <footer th:replace="layout :: site-footer" />
+
+</body>
+
+</html>

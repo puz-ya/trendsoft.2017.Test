@@ -9,7 +9,28 @@
 
         <header th:replace="layout :: site-header" />
 
-        <h1>Hello World!</h1>
+        <aside>
+            <h2>All Categories</h2>
+            <a href="#" th:each="p : ${categories}" th:text="${p.getName()}" th:href="@{/category/view/{id}/(id=${p.getId()})}">HTMLcode</a>
+        </aside>
+
+        <main id="news">
+            <article th:each="p : ${latest5news}">
+                <h2 class="title" th:text="${p.getTitle()}">Title</h2>
+                <p class="content" th:utext="${p.getShortContent()}">Content</p>
+                <a href="#" th:href="@{/news/view/{id}/(id=${p.getId()})}">Full text...</a>
+                <div class="date_n_cat">
+                    <i>Posted on</i>
+                    <span th:text="${p.getmTimeString()}">28-Feb-2017</span>
+                    <span th:if="${p.getCategory()}" th:remove="tag">
+                        <i>in</i>
+                        <a href="#" th:text="${p.category.getName()}" th:href="@{/category/view/{id}/(id=${p.category.getId()})}">Category Name</a>
+                    </span>
+                </div>
+            </article>
+
+            <p><a href="news/show/" th:href="@{/news/view/all}"><b>Show all</b></a></p>
+        </main>
 
         <footer th:replace="layout :: site-footer" />
 

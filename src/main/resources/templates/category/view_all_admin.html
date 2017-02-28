@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: site-head">
+    <title>All categories</title>
+</head>
+
+<body>
+
+    <header th:replace="layout :: site-header" />
+
+    <main id="all_categories">
+
+        <table th:if="${!all_categories.isEmpty()}">
+            <tr>
+                <td>ID</td>
+                <td>Name</td>
+                <td>Link to news</td>
+                <td>Link to edit</td>
+                <td>Link to delete</td>
+            </tr>
+            <tr th:each="cat : ${all_categories}">
+                <td  th:text="${cat.id}">Cat ID</td>
+                <td  th:text="${cat.name}">Cat Title</td>
+                <td> <a href="#" th:href="@{/category/view/{id}/(id=${cat.getId()})}">Show news</a> </td>
+                <td> <a href="#" th:href="@{/category/edit/{id}/(id=${cat.getId()})}">Edit</a> </td>
+                <td> <a href="#" th:href="@{/category/delete/{id}/(id=${cat.getId()})}">Delete</a> </td>
+            </tr>
+        </table>
+
+        <article th:if="${all_categories.isEmpty()}">
+            Empty, nothing to read here!
+        </article>
+    </main>
+
+    <footer th:replace="layout :: site-footer" />
+
+</body>
+
+</html>
