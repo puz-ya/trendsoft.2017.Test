@@ -1,51 +1,65 @@
 package ru.puzino.models;
 
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 /**
  * Created by Puzino Yury on 27.02.2017.
  */
+
+@Entity
+@Table(name = "categories")
 public class Category {
 
     /** id of category (unique) */
-    private Long mId;
-    /** name of category */
-    private String mCatName;
-    /** set of news in this category */
-    private Set<News> mNews = new HashSet<>();
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    public Category(Long id, String name){
-        this.mId = id;
-        this.mCatName = name;
+    /** name of category */
+    @Column(nullable = false, length = 300)
+    private String name;
+
+    /** all news by category */
+    @OneToMany(mappedBy = "category")
+    private List<News> news;
+
+    public Category(){}
+
+    public Category(String name){
+        this.name = name;
+
+        this.news = new ArrayList<>();
     }
 
     @Override
     public String toString(){
-        return "Category{" + "mId = " + mId + ", mCatName = '" + mCatName + "'" + "}";
+        return "Category{" + "id = " + id + ", name = '" + name + "'" + "}";
     }
 
-    public Long getmId() {
-        return mId;
+    public Long getId() {
+        return id;
     }
 
-    public void setmId(Long mId) {
-        this.mId = mId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getmCatName() {
-        return mCatName;
+    public String getName() {
+        return name;
     }
 
-    public void setmCatName(String mCatName) {
-        this.mCatName = mCatName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Set<News> getmNews() {
-        return mNews;
+    public List<News> getNews() {
+        return news;
     }
 
-    public void setmNews(Set<News> mNews) {
-        this.mNews = mNews;
+    public void setNews(List<News> news) {
+        this.news = news;
     }
 }
