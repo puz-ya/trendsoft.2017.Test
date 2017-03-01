@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="layout :: site-head">
-    <title>Create Category</title>
+    <title>Edit</title>
 </head>
 
 <body>
@@ -10,26 +10,27 @@
     <header th:replace="layout :: site-header" />
 
     <main>
-        <form th:action="@{/category/create}" method="POST">
+        <form th:action="@{/category/edit/{id}(id=${category.id})}" method="POST">
             <fieldset>
-                <legend>Create Category</legend>
+                <legend>Edit Category</legend>
 
                 <div>
-                    <label for="cat_name">Name</label>
+                    <label for="category_name">Name</label>
                     <div>
-                        <input type="text" id="cat_name" placeholder="Type here..." name="name"/>
+                        <input type="text" id="category_name" placeholder="Category name..." name="name" th:value="${category.name}"/>
                     </div>
                 </div>
 
                 <div>
                     <div>
-                        <a th:href="@{/}">Cancel</a>
-                        <input type="submit" value="Create"/>
+                        <a th:href="@{/category/{id}(id = ${category.id})}">Cancel</a>
+                        <input type="submit" value="Edit"/>
                     </div>
                 </div>
             </fieldset>
         </form>
     </main>
+
 
     <footer th:replace="layout :: site-footer" />
 

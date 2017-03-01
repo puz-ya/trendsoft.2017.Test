@@ -12,7 +12,7 @@
             <legend>Search news</legend>
         <center>
             <form th:action="@{/search/fullsearch}" method="POST">
-                <input type="text" name="searchText" placeholder="Search everywhere..." maxlength="100" size="100" />
+                <input type="text" name="searchFullText" placeholder="Search everywhere..." maxlength="100" size="100" />
             <div>
                 <input type="submit" value="Search!"/>
             </div>
@@ -24,17 +24,24 @@
                 <div>
                     <label for="news_title">Title</label>
                     <div>
-                        <input type="text" id="news_title" placeholder="Type here..." name="title"/>
+                        <input type="text" id="news_title" placeholder="Not empty..." name="searchTitle"/>
                     </div>
                 </div>
                 <div>
                     <label for="news_content">Content</label>
                     <div>
-                        <input type="text" id="news_content" placeholder="Type here..." name="content"/>
+                        <input type="text" id="news_content" placeholder="Not empty..." name="searchContent"/>
                     </div>
                 </div>
                 <!-- Category here -->
-
+                <div>
+                    <label for="news_category">Category</label>
+                    <div>
+                        <select id="news_category" name="categoryId">
+                            <option th:each="p : ${categories}" th:text="${p.getName()}" value="id1" th:value="${p.getId()}"></option>
+                        </select>
+                    </div>
+                </div>
                 <div>
                     <input type="submit" value="Search!"/>
                 </div>

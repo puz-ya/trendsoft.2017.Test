@@ -1,12 +1,10 @@
 package ru.puzino.bindingModel;
 
-import ru.puzino.models.Category;
-
 import javax.validation.constraints.NotNull;
 
 /**
  * Created by Puzino Yury on 28.02.2017.
- * To validate data from forms
+ * To validate data from news forms
  */
 public class NewsBinding {
 

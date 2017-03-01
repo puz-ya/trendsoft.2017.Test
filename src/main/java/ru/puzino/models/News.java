@@ -5,11 +5,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Created by Puzino Yury on 27.02.2017.
+ * Model of News
  */
 @Entity
 @Table(name = "news")

@@ -19,7 +19,7 @@
                 <h2 class="title" th:text="${p.getTitle()}">Title</h2>
                 <p class="content" th:utext="${p.getShortContent()}">Content</p>
                 <a href="#" th:href="@{/news/view/{id}/(id=${p.getId()})}">Full text...</a>
-                <div class="date_n_cat">
+                <div>
                     <i>Posted on</i>
                     <span th:text="${p.getmTimeString()}">28-Feb-2017</span>
                     <span th:if="${p.getCategory()}" th:remove="tag">

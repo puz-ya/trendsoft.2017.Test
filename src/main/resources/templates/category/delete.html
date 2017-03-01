@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: site-head">
+    <title>Delete</title>
+</head>
+
+<body>
+
+    <header th:replace="layout :: site-header" />
+
+    <main>
+        <form th:action="@{/category/delete/{id}(id=${category.id})}" method="POST">
+            <fieldset>
+                <legend>Delete Category</legend>
+
+                <div><p><b>Attention! If you delete this category, all news with it will be deleted too!</b></p></div>
+
+                <div>
+                    <label for="category_name">Name</label>
+                    <div>
+                        <input type="text" id="category_name" placeholder="Category name..." name="name" th:value="${category.name}" disabled="disabled"/>
+                    </div>
+                </div>
+
+                <div>
+                    <div>
+                        <a th:href="@{/category/{id}(id = ${category.id})}">Cancel</a>
+                        <input type="submit" value="Delete"/>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </main>
+
+
+    <footer th:replace="layout :: site-footer" />
+
+</body>
+
+</html>

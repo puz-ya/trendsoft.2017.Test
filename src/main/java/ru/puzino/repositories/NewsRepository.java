@@ -3,6 +3,7 @@ package ru.puzino.repositories;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import ru.puzino.models.News;
 
@@ -23,4 +24,13 @@ public interface NewsRepository extends JpaRepository<News, Long> {
     //select all from news by time order
     @Query("SELECT n FROM News n ORDER BY time DESC")
     List<News> findAllNews();
+
+    //select all with search query
+    @Query("SELECT n FROM News n WHERE (title LIKE :str OR content LIKE :str) ORDER BY time DESC")
+    List<News> findFullSearchNews(@Param("str") String str);
+
+    //select all with search query
+    @Query("SELECT n FROM News n WHERE ((title LIKE :tit OR content LIKE :con) AND category_id = :cid) ORDER BY time DESC")
+    List<News> findPartSearchNews(@Param("tit") String title, @Param("con") String content, @Param("cid") Long catId);
+
 }

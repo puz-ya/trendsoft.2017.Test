@@ -2,11 +2,11 @@ package ru.puzino.models;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 /**
  * Created by Puzino Yury on 27.02.2017.
+ * Model of Category. Each category can contain several News.
  */
 
 @Entity

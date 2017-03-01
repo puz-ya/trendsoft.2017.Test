@@ -12,11 +12,9 @@ import ru.puzino.models.Category;
 import ru.puzino.models.News;
 import ru.puzino.repositories.CategoryRepository;
 import ru.puzino.repositories.NewsRepository;
-import ru.puzino.services.NewsService;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Created by Puzino Yury on 28.02.2017.
@@ -24,8 +22,6 @@ import java.util.stream.Collectors;
 
 @Controller
 public class NewsController {
-    //@Autowired
-    //private NewsService postService;
 
     @Autowired
     private NewsRepository newsRepo;
@@ -117,17 +113,13 @@ public class NewsController {
 
         News news = this.newsRepo.findOne(id);
         this.newsRepo.delete(news);
-        return "redirect:/";
+        return "redirect:/news/admin";
     }
 
     /** show news by ID */
     @RequestMapping({"/news/view/{id}", "/news/{id}"})
     public String view(@PathVariable("id") Long id, Model model) {
-        /*News news = postService.findNewsById(id);
-        if (news == null) {
-            return "redirect:/";
-        }
-        */
+
         if(!this.newsRepo.exists(id)){
             return "redirect:/";
         }

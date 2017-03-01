@@ -18,15 +18,7 @@ import java.util.List;
 @Controller
 public class HomePageController {
 
-
-    /** "Autowired" will automatically injects the correct implementation for our services */
-    /*
-    @Autowired
-    private NewsService mNewsService;
-    @Autowired
-    private CategoryService mCatService;
-    //*/
-
+    /** "Autowired" will automatically injects the correct implementation */
     @Autowired
     private NewsRepository newsRepo;
     @Autowired
@@ -46,9 +38,4 @@ public class HomePageController {
         return "index";
     }
 
-    @RequestMapping("/search")
-    public String search(){
-
-        return "search";
-    }
 }
